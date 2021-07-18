@@ -1,0 +1,22 @@
+.admin-page-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 47px;
+}
+
+.admin-page-table-wrapper {
+  display: flex;
+  width: 70%;
+}
+
+.add-button-wrapper {
+  margin-left: 520px;
+  margin-bottom: 20px;
+}
+
+.add-button {
+  width: 96px;
+  height: 30px;
+  font-size: 20px;
+}

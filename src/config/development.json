@@ -1,0 +1,13 @@
+{
+  "dbConfig": {
+    "DB_USER": "postgres",
+    "DB_HOST": "localhost",
+    "DB_DATABASE": "shopping-site",
+    "DB_PASSWORD": "cviscx123123",
+    "DB_PORT": 5432
+  },
+  "backendConfig": {
+    "baseUrl": "http://localhost:5001/api"
+  },
+  "clientUrl": "http://localhost:8080/"
+}
