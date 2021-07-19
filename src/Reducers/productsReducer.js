@@ -4,6 +4,9 @@ const initialState = {
   products: [],
   shoppingCartProducts: [],
   shoppingCartSum: 0,
+  topFiveSells: [],
+  topFiveUniqueSells: [],
+  fiveDaysTransactions: [],
 };
 
 const productsReducer = (state = initialState, action) => {
@@ -116,15 +119,35 @@ const productsReducer = (state = initialState, action) => {
         shoppingCartProducts: [...filteredShoppingList],
       };
     }
-    // case 'home/sendTransactionAction': {
-    //   try {
-    //     const res = await HttpService.makeHttpPostRequest(
-    //       '/transactions/create',
-    //       { ...state.shoppingCartProducts, ...state.shoppingCartSum } /////
-    //     );
-    //     return { ...state };
-    //   } catch (error) {}
-    // }
+    case 'home/sendTransactionAction': {
+      return {
+        ...state,
+        shoppingCartSum: 0,
+        shoppingCartProducts: [],
+      };
+    }
+    case 'stats/getTopFiveSells': {
+      const topFiveSells = payload;
+      return {
+        ...state,
+        topFiveSells: topFiveSells,
+      };
+    }
+    case 'stats/getTopFiveUniqueSells': {
+      const topFiveUniqueSells = payload;
+      return {
+        ...state,
+        topFiveUniqueSells: topFiveUniqueSells,
+      };
+    }
+    case 'stats/getFiveDaysTransactions': {
+      const fiveDaysTransactions = payload;
+      return {
+        ...state,
+        fiveDaysTransactions: fiveDaysTransactions,
+      };
+    }
+
     default:
       return { ...state };
   }

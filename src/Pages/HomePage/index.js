@@ -88,35 +88,54 @@ const HomePage = () => {
       <div className="shopping-cart-button-wrapper">
         <button className="shopping-cart">shopping cart</button>
       </div>
-      <ImageList rowHeight={180} className={classes.imageList}>
-        <ImageListItem key="Subheader" cols={2} style={{ height: 'auto' }}>
+      {/* <ImageList rowHeight={180} className={classes.imageList}> */}
+      {/* <ImageListItem key="Subheader" cols={2} style={{ height: 'auto' }}>
           <ListSubheader component="div">Product's list</ListSubheader>
-        </ImageListItem>
+        </ImageListItem> */}
+      <div className="grid-wrapper">
         {products &&
           products?.map((product, index) => (
-            <ImageListItem key={index}>
-              <img src={product.imageUrl} alt={product.title} />
-              <ImageListItemBar
-                title={product.title}
-                subtitle={
-                  <div>
-                    <span>{product.description}</span> <br />{' '}
-                    <span> {product.price} $ </span>
-                  </div>
-                }
-                actionIcon={
-                  <IconButton
-                    onClick={() => onAddProductToShoppingCart(product)}
-                    aria-label={`info about ${product.title}`}
-                    className={classes.icon}
-                  >
-                    <i class="fas fa-cart-plus"></i>
-                  </IconButton>
-                }
+            <div className="product-wrapper">
+              <img
+                className="home-page-product-image"
+                src={product.imageUrl}
+                alt={product.title}
               />
-            </ImageListItem>
+              <label> {`title: ${product.title}`}</label>
+              <label> {`description: ${product.description}`}</label>
+              <label>{`price: ${product.price}`}</label>
+              <IconButton
+                onClick={() => onAddProductToShoppingCart(product)}
+                aria-label={`info about ${product.title}`}
+                className={classes.icon}
+              >
+                <i class="fas fa-cart-plus"></i>
+              </IconButton>
+              {/* <ImageListItem key={index}>
+                <img src={product.imageUrl} alt={product.title} />
+                <ImageListItemBar
+                  title={product.title}
+                  subtitle={
+                    <div>
+                      <span>{product.description}</span> <br />{' '}
+                      <span> {product.price} $ </span>
+                    </div>
+                  }
+                  actionIcon={
+                    <IconButton
+                      onClick={() => onAddProductToShoppingCart(product)}
+                      aria-label={`info about ${product.title}`}
+                      className={classes.icon}
+                    >
+                      <i class="fas fa-cart-plus"></i>
+                    </IconButton>
+                  }
+                />
+              </ImageListItem> */}
+            </div>
           ))}
-      </ImageList>
+      </div>
+      {/* </ImageList> */}
     </div>
   );
 };

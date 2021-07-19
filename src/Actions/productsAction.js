@@ -147,8 +147,58 @@ export const decreaseProductAmountAction = (product) => async (dispatch) => {
   });
 };
 
-export const sendTransactionAction = (dispatch) => {
+export const sendTransactionAction = () => async (dispatch) => {
+  const { shoppingCartProducts, shoppingCartSum } = store.getState().products;
+  shoppingCartProducts.forEach((el) => {
+    el.uniqueSold++;
+    el.soldAmount += el.amount;
+    delete el.amount;
+  });
+  for (const product of shoppingCartProducts) {
+    const res = await HttpService.makeHttpPatchRequest(
+      'products/update',
+      product
+    );
+  }
+  const transactionRes = await HttpService.makeHttpPostRequest(
+    'transactions/create',
+    { shoppingCartSum }
+  );
+  console.log('shoppingCartProducts/create', shoppingCartProducts);
+  // const res = HttpService.makeHttpPatchRequest({shoppingCartSum
+
+  // })
+
   dispatch({
     type: 'home/sendTransactionAction',
+    // payload:''
+  });
+};
+
+export const getTopFiveSells = () => async (dispatch) => {
+  const topFiveSells = await HttpService.makeHttpGetRequest(
+    'products/get-top-five-sells'
+  );
+
+  dispatch({ type: 'stats/getTopFiveSells', payload: topFiveSells });
+};
+export const getTopFiveUniqueSells = () => async (dispatch) => {
+  const topFiveUniqueSells = await HttpService.makeHttpGetRequest(
+    'products/get-top-five-unique-sells'
+  );
+
+  dispatch({
+    type: 'stats/getTopFiveUniqueSells',
+    payload: topFiveUniqueSells,
+  });
+};
+export const getFiveDaysTransaction = () => async (dispatch) => {
+  const fiveDaysTransactions = await HttpService.makeHttpGetRequest(
+    'transactions/get-five-days-transactions'
+  );
+
+  dispatch({
+    type: 'stats/getFiveDaysTransactions',
+    payload: fiveDaysTransactions,
   });
 };

@@ -128,14 +128,14 @@ const CDrawer = () => {
     dispatch(decreaseProductAmountAction(product));
   };
 
-  const onCheckoutButton = async () => {
+  const onCheckoutButton = () => {
     //     try {
     // const res = HttpService.makeHttpPostRequest('/')
     //     } catch(error) {
 
     //     }
 
-    dispatch(sendTransactionAction);
+    dispatch(sendTransactionAction());
   };
 
   // const shoppingCart = ['All mail', 'Trash', 'Spam'];
