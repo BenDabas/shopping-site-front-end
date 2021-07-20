@@ -8,10 +8,6 @@ import {
 import CDrawer from '../../Components/Drawer/drawer';
 
 import { makeStyles } from '@material-ui/core/styles';
-import ImageList from '@material-ui/core/ImageList';
-import ImageListItem from '@material-ui/core/ImageListItem';
-import ImageListItemBar from '@material-ui/core/ImageListItemBar';
-import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
 
 import './index.css';
@@ -19,7 +15,6 @@ import './index.css';
 const useStyles = makeStyles((theme) => ({
   imageList: {
     width: 500,
-    // height: 450,
   },
   icon: {
     backgroundColor: 'black',
@@ -54,7 +49,7 @@ const HomePage = () => {
       <div className="grid-wrapper">
         {products &&
           products?.map((product, index) => (
-            <div className="product-wrapper">
+            <div key={index} className="product-wrapper">
               <img
                 className="home-page-product-image"
                 src={product.imageUrl}
@@ -71,7 +66,7 @@ const HomePage = () => {
                   aria-label={`info about ${product.title}`}
                   className={classes.icon}
                 >
-                  <i class="fas fa-cart-plus"></i>
+                  <i className="fas fa-cart-plus"></i>
                 </IconButton>
               </div>
             </div>

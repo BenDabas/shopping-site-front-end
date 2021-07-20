@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 
 import EditProductModal from '../EditProductModal/editProductModal';
 
-import axios from '../../Services/Axios/axios';
-
 import { useSelector, useDispatch } from 'react-redux';
 
 import { deleteProductAction } from '../../Actions/productsAction';
@@ -48,25 +46,11 @@ const AdminTable = () => {
 
   const { products } = useSelector((state) => state.products);
 
-  // const { products } = useSelector((state) => state.products);
-
   const state = useSelector((state) => state);
   console.log('state:', state);
 
   const [productToEdit, setProductToEdit] = useState({});
   const [open, setOpen] = useState(false);
-
-  function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-  }
-
-  const rowss = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-  ];
 
   const onDeleteProduct = (productId) => {
     dispatch(deleteProductAction(productId));
@@ -78,10 +62,6 @@ const AdminTable = () => {
 
   const handleClose = () => {
     setOpen(false);
-  };
-
-  const onClickAddButton = () => {
-    handleOpen();
   };
 
   const openEditModal = (product) => {
@@ -100,10 +80,22 @@ const AdminTable = () => {
         <TableHead>
           <TableRow>
             <StyledTableCell align="right">title</StyledTableCell>
-            <StyledTableCell align="right">description</StyledTableCell>
-            <StyledTableCell align="right">image</StyledTableCell>
+            <StyledTableCell style={{ width: '25%' }} align="right">
+              description
+            </StyledTableCell>
+            <StyledTableCell
+              style={{ display: 'flex', justifyContent: 'center' }}
+              align="right"
+            >
+              image
+            </StyledTableCell>
             <StyledTableCell align="right">price</StyledTableCell>
-            <StyledTableCell align="right">option</StyledTableCell>
+            <StyledTableCell
+              style={{ display: 'flex', justifyContent: 'center' }}
+              align="right"
+            >
+              option
+            </StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -123,7 +115,6 @@ const AdminTable = () => {
                 </StyledTableCell>
                 <StyledTableCell align="right">{row.price}</StyledTableCell>
                 <StyledTableCell align="right">
-                  {/* <button onClick={()=>onEditProduct(row.id)}>edit</button> */}
                   <Button
                     style={{ margin: '5px' }}
                     variant="contained"
@@ -142,8 +133,6 @@ const AdminTable = () => {
                 </StyledTableCell>
               </StyledTableRow>
             ))}
-
-          {console.log('rows::', products)}
         </TableBody>
       </Table>
     </TableContainer>

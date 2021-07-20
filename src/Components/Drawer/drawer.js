@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
@@ -7,14 +7,8 @@ import {
   sendTransactionAction,
 } from '../../Actions/productsAction';
 
-import HttpService from '../../Services/HttpService/httpService';
-
 import clsx from 'clsx';
-import {
-  makeStyles,
-  responsiveFontSizes,
-  useTheme,
-} from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -23,14 +17,10 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import PaymentSharpIcon from '@material-ui/icons/PaymentSharp';
 
 import CreditCardIcon from '@material-ui/icons/CreditCard';
@@ -99,16 +89,9 @@ const CDrawer = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
 
-  // const [sum, setSum] = useState(0);
-
-  // const { products } = useSelector((state) => state.products);
   const state = useSelector((state) => state);
-  const { shoppingCartProducts, shoppingCartSum } = state.products;
-  // const { shoppingCartProducts } = useSelector(
-  //   (state) => state.shoppingCartProducts
-  // );
 
-  console.log('state', state);
+  const { shoppingCartProducts, shoppingCartSum } = state.products;
   console.log('shoppingCartProducts', shoppingCartProducts);
 
   const [open, setOpen] = React.useState(false);
@@ -130,16 +113,8 @@ const CDrawer = () => {
   };
 
   const onCheckoutButton = () => {
-    //     try {
-    // const res = HttpService.makeHttpPostRequest('/')
-    //     } catch(error) {
-
-    //     }
-
     dispatch(sendTransactionAction());
   };
-
-  // const shoppingCart = ['All mail', 'Trash', 'Spam'];
 
   return (
     <div className={classes.root}>

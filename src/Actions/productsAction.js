@@ -3,11 +3,6 @@ import store from '../Store/store';
 
 export const deleteProductAction = (productId) => async (dispatch) => {
   try {
-    // type: 'admin/deleteProduct',
-
-    // const productToDelete = rows[index];
-
-    // const res = await axios.delete('products/delete', productToDelete.id);
     const res = await HttpService.makeHttpDeleteRequest(
       `products/delete/${productId}`
     );
@@ -19,8 +14,6 @@ export const deleteProductAction = (productId) => async (dispatch) => {
         type: 'admin/deleteProduct',
         payload: productId,
       });
-      //   const newRows = rows.filter((row) => row.id !== productId);
-      //   setRows(newRows);
     } else {
       console.log(
         `Actions/productsAction: deleteProductAction: Deleted product failed! product's id: ${productId}`
@@ -106,9 +99,7 @@ export const editProductAction = (product) => async (dispatch) => {
 
 export const addProductToShoppingCartAction = (product) => async (dispatch) => {
   try {
-    // const { products } = store.getState().products;
     const { shoppingCartSum, shoppingCartProducts } = store.getState().products;
-    // const { shoppingCartSum, shoppingCartProducts } = store.getState().products;
     const newSum = shoppingCartSum + product.price;
 
     const isProductInShoppingCart = shoppingCartProducts.find(
@@ -165,13 +156,9 @@ export const sendTransactionAction = () => async (dispatch) => {
     { shoppingCartSum }
   );
   console.log('shoppingCartProducts/create', shoppingCartProducts);
-  // const res = HttpService.makeHttpPatchRequest({shoppingCartSum
-
-  // })
 
   dispatch({
     type: 'home/sendTransactionAction',
-    // payload:''
   });
 };
 

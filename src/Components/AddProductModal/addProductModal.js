@@ -3,9 +3,6 @@ import { useDispatch } from 'react-redux';
 
 import { createNewProductAction } from '../../Actions/productsAction';
 
-// import axios from '../../Services/Axios/axios';
-import HttpService from '../../Services/HttpService/httpService';
-
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';

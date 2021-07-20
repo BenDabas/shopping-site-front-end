@@ -53,7 +53,9 @@ const StatsTable = () => {
           {fiveDaysTransactions &&
             fiveDaysTransactions.map((row, index) => {
               return (
-                <label key={index}>{`${row.createdAt}: ${row.price}`}</label>
+                <label key={index}>{`${row.createdAt
+                  .toString()
+                  .slice(0, 19)}:  ${row.price}`}</label>
               );
             })}
         </div>
