@@ -31,7 +31,10 @@ const StatsTable = () => {
           {topFiveSells &&
             topFiveSells.map((row, index) => {
               return (
-                <label key={index}>{`${row.title}: ${row.soldAmount}`}</label>
+                <label
+                  className="stats-table-input"
+                  key={index}
+                >{`${row.title}: ${row.soldAmount}`}</label>
               );
             })}
         </div>
@@ -42,7 +45,10 @@ const StatsTable = () => {
           {topFiveUniqueSells &&
             topFiveUniqueSells.map((row, index) => {
               return (
-                <label key={index}>{`${row.title}: ${row.uniqueSold}`}</label>
+                <label
+                  className="stats-table-input"
+                  key={index}
+                >{`${row.title}: ${row.uniqueSold}`}</label>
               );
             })}
         </div>
@@ -53,9 +59,12 @@ const StatsTable = () => {
           {fiveDaysTransactions &&
             fiveDaysTransactions.map((row, index) => {
               return (
-                <label key={index}>{`${row.createdAt
-                  .toString()
-                  .slice(0, 19)}:  ${row.price}`}</label>
+                <label
+                  className="stats-table-input"
+                  key={index}
+                >{`${row.createdAt.toString().slice(0, 19)}:  ${
+                  row.price
+                }`}</label>
               );
             })}
         </div>
