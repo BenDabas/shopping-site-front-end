@@ -24,6 +24,7 @@
   padding: 10px;
   margin: 5px;
   position: relative;
+  background-color: aliceblue;
 }
 .home-page-product-image {
   max-height: 200px;

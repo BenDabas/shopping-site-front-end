@@ -195,8 +195,6 @@ const CDrawer = () => {
           {shoppingCartProducts &&
             shoppingCartProducts.map((product, index) => (
               <ListItem button key={index}>
-                {/* <ListItemText primary={product.title} /> */}
-
                 <ListItemText
                   primary={`${product.title}: ${product.price},         amount: ${product.amount}`}
                 />
@@ -206,7 +204,7 @@ const CDrawer = () => {
             ))}
         </List>
         <Divider />
-        <label>{`Sum: ${shoppingCartSum}`}</label>
+        <label>{`Sum: ${shoppingCartSum.toFixed(2)}`}</label>
         <div>
           <CreditCardIcon
             fontSize="large"
