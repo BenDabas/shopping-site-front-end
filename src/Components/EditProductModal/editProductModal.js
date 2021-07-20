@@ -45,6 +45,7 @@ const EditProductModal = ({ open, onClose, productToEdit }) => {
 
   const onEditProductButton = () => {
     dispatch(editProductAction(product));
+    onClose();
   };
 
   return (

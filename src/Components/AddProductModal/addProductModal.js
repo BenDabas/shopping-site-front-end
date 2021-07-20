@@ -31,12 +31,14 @@ const AddProductModal = ({ open, onClose }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  const [product, setProduct] = useState({
+  const defaultProduct = {
     title: '',
-    price: 0,
+    price: '',
     description: '',
     imageURL: '',
-  });
+  };
+
+  const [product, setProduct] = useState(defaultProduct);
 
   const handleProductInput = ({ target }) => {
     const { name, value } = target;
@@ -46,13 +48,11 @@ const AddProductModal = ({ open, onClose }) => {
 
   const onAddProductButton = () => {
     dispatch(createNewProductAction(product));
+    setProduct(defaultProduct);
   };
 
   return (
     <div>
-      {/* <button type="button" onClick={handleOpen}>
-        react-transition-group
-      </button> */}
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -69,13 +69,29 @@ const AddProductModal = ({ open, onClose }) => {
           <div className={classes.paper}>
             <h2 id="transition-modal-title">Add new product</h2>
             <label>Title</label>
-            <input name="title" onChange={handleProductInput} />
+            <input
+              name="title"
+              value={product.title}
+              onChange={handleProductInput}
+            />
             <label>Price</label>
-            <input name="price" onChange={handleProductInput} />
+            <input
+              name="price"
+              value={product.price}
+              onChange={handleProductInput}
+            />
             <label>Description</label>
-            <input name="description" onChange={handleProductInput} />
+            <input
+              name="description"
+              value={product.description}
+              onChange={handleProductInput}
+            />
             <label>Image</label>
-            <input name="imageURL" onChange={handleProductInput} />
+            <input
+              name="imageURL"
+              value={product.imageURL}
+              onChange={handleProductInput}
+            />
             <button onClick={onAddProductButton}>Add product</button>
           </div>
         </Fade>

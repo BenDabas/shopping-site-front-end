@@ -16,6 +16,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -123,10 +124,21 @@ const AdminTable = () => {
                 <StyledTableCell align="right">{row.price}</StyledTableCell>
                 <StyledTableCell align="right">
                   {/* <button onClick={()=>onEditProduct(row.id)}>edit</button> */}
-                  <button onClick={() => openEditModal(row)}>edit</button>
-                  <button onClick={() => onDeleteProduct(row.id)}>
+                  <Button
+                    style={{ margin: '5px' }}
+                    variant="contained"
+                    color="primary"
+                    onClick={() => openEditModal(row)}
+                  >
+                    edit
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    onClick={() => onDeleteProduct(row.id)}
+                  >
                     delete
-                  </button>
+                  </Button>
                 </StyledTableCell>
               </StyledTableRow>
             ))}

@@ -6,6 +6,7 @@ import { getAllProductsAction } from '../../Actions/productsAction';
 import axios from '../../Services/Axios/axios';
 import AdminTable from '../../Components/Tables/adminTable';
 import AddProductModal from '../../Components/AddProductModal/addProductModal';
+import Button from '@material-ui/core/Button';
 
 import HttpService from '../../Services/HttpService/httpService';
 
@@ -45,9 +46,14 @@ const AdminPage = () => {
     <div className="admin-page-wrapper">
       <AddProductModal open={open} onClose={handleClose} />
       <div className="add-button-wrapper">
-        <button className="add-button" onClick={onClickAddButton}>
+        <Button
+          variant="contained"
+          color="primary"
+          className="add-button"
+          onClick={onClickAddButton}
+        >
           Add
-        </button>
+        </Button>
       </div>
       <div className="admin-page-table-wrapper">
         <AdminTable />
