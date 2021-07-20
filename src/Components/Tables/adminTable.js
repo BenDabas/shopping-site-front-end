@@ -100,6 +100,7 @@ const AdminTable = () => {
           <TableRow>
             <StyledTableCell align="right">title</StyledTableCell>
             <StyledTableCell align="right">description</StyledTableCell>
+            <StyledTableCell align="right">image</StyledTableCell>
             <StyledTableCell align="right">price</StyledTableCell>
             <StyledTableCell align="right">option</StyledTableCell>
           </TableRow>
@@ -111,6 +112,13 @@ const AdminTable = () => {
                 <StyledTableCell align="right">{row.title}</StyledTableCell>
                 <StyledTableCell align="right">
                   {row.description}
+                </StyledTableCell>
+                <StyledTableCell align="right">
+                  <img
+                    src={row.imageUrl}
+                    alt={row.title}
+                    style={{ maxHeight: '150px', maxWidth: '150px' }}
+                  />
                 </StyledTableCell>
                 <StyledTableCell align="right">{row.price}</StyledTableCell>
                 <StyledTableCell align="right">
