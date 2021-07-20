@@ -56,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
     // height: 450,
   },
   icon: {
+    backgroundColor: 'black',
     color: 'rgba(255, 255, 255, 0.54)',
   },
 }));
@@ -85,9 +86,9 @@ const HomePage = () => {
     <div className="home-page-wrapper">
       <CDrawer />
 
-      <div className="shopping-cart-button-wrapper">
+      {/* <div className="shopping-cart-button-wrapper">
         <button className="shopping-cart">shopping cart</button>
-      </div>
+      </div> */}
       {/* <ImageList rowHeight={180} className={classes.imageList}> */}
       {/* <ImageListItem key="Subheader" cols={2} style={{ height: 'auto' }}>
           <ListSubheader component="div">Product's list</ListSubheader>
@@ -101,16 +102,20 @@ const HomePage = () => {
                 src={product.imageUrl}
                 alt={product.title}
               />
-              <label> {`title: ${product.title}`}</label>
-              <label> {`description: ${product.description}`}</label>
-              <label>{`price: ${product.price}`}</label>
-              <IconButton
-                onClick={() => onAddProductToShoppingCart(product)}
-                aria-label={`info about ${product.title}`}
-                className={classes.icon}
-              >
-                <i class="fas fa-cart-plus"></i>
-              </IconButton>
+              <div className="labels-input-wrapper-home-page">
+                <label> {`title: ${product.title}`}</label>
+                <label> {`description: ${product.description}`}</label>
+                <label>{`price: ${product.price}`}</label>
+              </div>
+              <div className="add-to-cart-button-wrapper">
+                <IconButton
+                  onClick={() => onAddProductToShoppingCart(product)}
+                  aria-label={`info about ${product.title}`}
+                  className={classes.icon}
+                >
+                  <i class="fas fa-cart-plus"></i>
+                </IconButton>
+              </div>
               {/* <ImageListItem key={index}>
                 <img src={product.imageUrl} alt={product.title} />
                 <ImageListItemBar

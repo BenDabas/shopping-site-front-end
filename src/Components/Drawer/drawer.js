@@ -31,6 +31,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import PaymentSharpIcon from '@material-ui/icons/PaymentSharp';
 
 import CreditCardIcon from '@material-ui/icons/CreditCard';
 
@@ -150,6 +151,9 @@ const CDrawer = () => {
         })}
       >
         <Toolbar>
+          <Typography variant="h6" noWrap className={classes.title}>
+            Home page
+          </Typography>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -157,7 +161,7 @@ const CDrawer = () => {
             onClick={handleDrawerOpen}
             className={clsx(open && classes.hide)}
           >
-            <MenuIcon />
+            <PaymentSharpIcon />
           </IconButton>
         </Toolbar>
       </AppBar>
@@ -179,7 +183,7 @@ const CDrawer = () => {
       >
         <div className={classes.drawerHeader}>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? (
+            {theme.direction === 'ltl' ? (
               <ChevronLeftIcon />
             ) : (
               <ChevronRightIcon />

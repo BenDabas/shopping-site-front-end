@@ -196,6 +196,9 @@ export const getFiveDaysTransaction = () => async (dispatch) => {
   const fiveDaysTransactions = await HttpService.makeHttpGetRequest(
     'transactions/get-five-days-transactions'
   );
+  fiveDaysTransactions.forEach((transaction) => {
+    transaction.createdAt.toString().slice(0, 10);
+  });
 
   dispatch({
     type: 'stats/getFiveDaysTransactions',
