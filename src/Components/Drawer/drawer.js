@@ -22,7 +22,8 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import PaymentSharpIcon from '@material-ui/icons/PaymentSharp';
-
+import AddIcon from '@material-ui/icons/Add';
+import RemoveIcon from '@material-ui/icons/Remove';
 import CreditCardIcon from '@material-ui/icons/CreditCard';
 
 const drawerWidth = 440;
@@ -173,8 +174,10 @@ const CDrawer = () => {
                 <ListItemText
                   primary={`${product.title}: ${product.price},         amount: ${product.amount}`}
                 />
-                <button onClick={() => onClickPlusButton(product)}>+</button>
-                <button onClick={() => onClickMinusButton(product)}>-</button>
+                <AddIcon onClick={() => onClickPlusButton(product)}>+</AddIcon>
+                <RemoveIcon onClick={() => onClickMinusButton(product)}>
+                  -
+                </RemoveIcon>
               </ListItem>
             ))}
         </List>
