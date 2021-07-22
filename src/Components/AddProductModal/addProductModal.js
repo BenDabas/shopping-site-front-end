@@ -7,6 +7,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import Button from '@material-ui/core/Button';
+
+import './addProductModal.css';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -17,10 +20,12 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
+    width: '250px',
+    height: ' 350px',
+    backgroundColor: '#f5f5f5',
   },
 }));
 
@@ -67,29 +72,40 @@ const AddProductModal = ({ open, onClose }) => {
             <h2 id="transition-modal-title">Add new product</h2>
             <label>Title</label>
             <input
+              className="add-product-modal-input"
               name="title"
               value={product.title}
               onChange={handleProductInput}
             />
             <label>Price</label>
             <input
+              className="add-product-modal-input"
               name="price"
               value={product.price}
               onChange={handleProductInput}
             />
             <label>Description</label>
             <input
+              className="add-product-modal-input"
               name="description"
               value={product.description}
               onChange={handleProductInput}
             />
             <label>Image</label>
             <input
+              className="add-product-modal-input"
               name="imageURL"
               value={product.imageURL}
               onChange={handleProductInput}
             />
-            <button onClick={onAddProductButton}>Add product</button>
+            <Button
+              variant="contained"
+              color="primary"
+              style={{ marginTop: '5px' }}
+              onClick={onAddProductButton}
+            >
+              Add product
+            </Button>
           </div>
         </Fade>
       </Modal>

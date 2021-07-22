@@ -100,7 +100,7 @@ export const editProductAction = (product) => async (dispatch) => {
 export const addProductToShoppingCartAction = (product) => async (dispatch) => {
   try {
     const { shoppingCartSum, shoppingCartProducts } = store.getState().products;
-    const newSum = shoppingCartSum + product.price;
+    let newSum = shoppingCartSum + product.price;
 
     const isProductInShoppingCart = shoppingCartProducts.find(
       (el) => el.id === product.id

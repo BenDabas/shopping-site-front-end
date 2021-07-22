@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
@@ -25,6 +25,8 @@ import PaymentSharpIcon from '@material-ui/icons/PaymentSharp';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import CreditCardIcon from '@material-ui/icons/CreditCard';
+
+import './drawer.css';
 
 const drawerWidth = 440;
 
@@ -93,9 +95,15 @@ const CDrawer = () => {
   const state = useSelector((state) => state);
 
   const { shoppingCartProducts, shoppingCartSum } = state.products;
-  console.log('shoppingCartProducts', shoppingCartProducts);
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [transactionEmpty, setTransactionEmpty] = useState(false);
+
+  useEffect(() => {
+    if (shoppingCartProducts.length) {
+      setTransactionEmpty(false);
+    }
+  }, [shoppingCartProducts]);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -106,15 +114,22 @@ const CDrawer = () => {
   };
 
   const onClickPlusButton = (product) => {
+    setTransactionEmpty(false);
     dispatch(increaseProductAmountAction(product));
   };
 
   const onClickMinusButton = (product) => {
+    setTransactionEmpty(false);
     dispatch(decreaseProductAmountAction(product));
   };
 
   const onCheckoutButton = () => {
-    dispatch(sendTransactionAction());
+    if (shoppingCartProducts?.length) {
+      setTransactionEmpty(false);
+      dispatch(sendTransactionAction());
+    } else {
+      setTransactionEmpty(true);
+    }
   };
 
   return (
@@ -172,7 +187,7 @@ const CDrawer = () => {
             shoppingCartProducts.map((product, index) => (
               <ListItem button key={index}>
                 <ListItemText
-                  primary={`${product.title}: ${product.price},         amount: ${product.amount}`}
+                  primary={`${product.title}: ${product.price}, amount: ${product.amount}`}
                 />
                 <AddIcon onClick={() => onClickPlusButton(product)}>+</AddIcon>
                 <RemoveIcon onClick={() => onClickMinusButton(product)}>
@@ -182,11 +197,16 @@ const CDrawer = () => {
             ))}
         </List>
         <Divider />
-        <label>{`Sum: ${shoppingCartSum.toFixed(2)}`}</label>
+        <label>{`Sum: ${
+          Number.isInteger(shoppingCartSum)
+            ? shoppingCartSum
+            : shoppingCartSum.toFixed(2)
+        } $`}</label>
         <div>
           <CreditCardIcon
+            className="drawer-credit-card-button"
             fontSize="large"
-            style={{ fontSize: 40 }}
+            style={{ fontSize: 40, cursor: 'pointer' }}
             onClick={onCheckoutButton}
           />
         </div>
